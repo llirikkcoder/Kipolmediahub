@@ -83,19 +83,16 @@ class GetForm extends React.Component {
       role: [],
       ipldHash: '', 
       fromKinopoisk: '',
-      //kinoIds: []  
+      kinoIds: []  
     };
   }
   
   componentDidMount() {
-
-    //URL = 'https://www.kinopoisk.ru/lists/m_act%5Bgenre%5D/3/';
     let ids = []
     let namesOrig = []
     needle('get', 'https://www.kinopoisk.ru/lists/m_act%5Bgenre%5D/3/')
       .then(function(res) {
         var $ = cheerio.load(res.body)
-        //console.log($('.tenItems').text())
         const item = $('.tenItems .item')
         
         item.each((i, val) =>{
@@ -107,49 +104,19 @@ class GetForm extends React.Component {
         })
         console.log('Внутри метода:', JSON.stringify(namesOrig))
 
-        // this.setState({
-        //       kinoIds: namesOrig
-        //     })
-        //     console.log('namesOrig', this.state.kinoIds)
+        // async function main() {
+        //   await this.setState({
+        //     kinoIds: namesOrig
+        //   })
+        //   console.log('namesOrig', this.state.kinoIds)
+        // }
+        // main()
       })
       .catch(function(err) {
         if (err) throw err;
       });
-
-
-    // URL = 'https://www.kinopoisk.ru/lists/m_act%5Bgenre%5D/3/';
-    // let ids = []
-    // let namesOrig = []
-
-    // needle.get(URL, function (err, res) {
-    //     if (err) throw err;
-
-    //     var $ = cheerio.load(res.body)
-    //     //console.log($('.tenItems').text())
-    //     const item = $('.tenItems .item')
-        
-    //     item.each((i, val) =>{
-    //         ids.push(($(val).attr('id')).slice(3))
-    //     })
-    //     const names = $('.tenItems .name span')//.text()
-    //     names.each((i, val) =>{
-    //         namesOrig.push($(val).text().split(' (')[0])
-    //     })
-    //     console.log('Внутри метода:', JSON.stringify(namesOrig))
-        
-    //   });
-    //   this.setState({
-    //     kinoIds: namesOrig
-    //   })
-    //   console.log('namesOrig', this.state.kinoIds)
-
-
-
-
-
-
-
-
+      
+      ///////////////////////////////////////////
 
   //   const URL = 'https://www.kinopoisk.ru/lists/m_act%5Bgenre%5D/3/';
   //   let ids = []
